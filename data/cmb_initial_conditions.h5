@@ -1,0 +1,23 @@
+import h5py
+import numpy as np
+
+# Create mock relativistic CMB initial conditions
+with h5py.File('data/cmb_initial_conditions.h5', 'w') as f:
+    # Covariant time fields (3D grid: x, y, z)
+    f.create_dataset('T_plus', 
+                     data=np.random.normal(0, 1e-5, (256, 256, 256)),  # T+ fluctuations
+                     dtype='float32')
+    f.create_dataset('T_minus', 
+                     data=np.random.normal(0, 1e-5, (256, 256, 256)),  # T- fluctuations
+                     dtype='float32')
+    
+    # Relativistic parameters (Lorentz factors, coupling constants)
+    f.create_dataset('gamma', 
+                     data=np.full((256, 256, 256), 1.2),  # Lorentz factor γ ≈ 1.2
+                     dtype='float32')
+    
+    # Attributes (TFM relativistic parameters)
+    f.attrs['alpha'] = 0.75    # Damping rate [GeV]
+    f.attrs['beta'] = 1.1e-5   # Noise amplitude [GeV¹⸝²]
+    f.attrs['g_dirac'] = 0.15  # Dirac coupling constant (Eq. 2.3)
+    f.attrs['description'] = "TFM Paper #19: Relativistic CMB initial conditions for covariant T+/T- fields."
