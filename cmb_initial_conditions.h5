@@ -1,0 +1,10 @@
+/cmb_initial_conditions.h5
+├── /T_plus        # float32 array (256³) - T+ field fluctuations [dimensionless]
+├── /T_minus       # float32 array (256³) - T- field fluctuations [dimensionless]
+├── /gamma         # float32 array (256³) - Local Lorentz factor γ(x,y,z)
+│
+├── ATTRIBUTES:
+│   ├── alpha: 0.75          # OU damping rate (GeV)
+│   ├── beta: 1.1e-5         # Noise amplitude (GeV¹⸝²)
+│   ├── g_dirac: 0.15        # Dirac coupling (Eq. 2.3)
+│   └── description: "TFM Paper #19: Relativistic CMB initial conditions..."
